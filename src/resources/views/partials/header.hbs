@@ -1,18 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Homepage</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+  <div class='container'>
+    <a class='navbar-brand' href='/'>Homepage</a>
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-toggle='collapse'
+      data-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul>
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav ml-auto'>
+        <li class='nav-item dropdown'>
+          <button
+            class='btn btn-dark nav-link dropdown-toggle'
+            type='button'
+            id='dropdownMenuButton'
+            data-toggle='dropdown'
+            aria-haspopup='true'
+            aria-expanded='false'
+          >
+            <img
+              src='https://yt3.ggpht.com/EfUiH4pWSLNxd1aOKHBDe8aKg1eL5O8q9Rm07_PVI7myc2IcBmll47X3iZ38C4pnceL0-nGkiy0=s48-c-k-c0x00ffffff-no-rj'
+              class='user-avatar'
+            />
+            Trường
+          </button>
+          <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+            <a class='dropdown-item' href='/courses/create'>Đăng sản phẩm</a>
+            <div class='dropdown-divider'></div>
+            <a class='dropdown-item' href='/me/stored/courses'>Sản phẩm của tôi</a>
+            <a class='dropdown-item' href='/me/stored/news'>Bài viết của tôi</a>
+            <div class='dropdown-divider'></div>
+            <a class='dropdown-item' href='#'>Đăng xuất</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
