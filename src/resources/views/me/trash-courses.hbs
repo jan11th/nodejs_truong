@@ -11,7 +11,7 @@
       <th scope='col'>Tên sản phẩm</th>
       <th scope='col'>Giá</th>
       <th scope='col'>Mô tả</th>
-      <th scope='col' colspan='3'>Thời gian tạo</th>
+      <th scope='col' colspan='3'>Thời gian xoá</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +21,7 @@
         <td>{{this.name}}</td>
         <td>{{this.price}}</td>
         <td>{{this.description}}</td>
-        <td>{{this.createdAt}}</td>
+        <td>{{this.deletedAt}}</td>
         <td>
             <a href='' class='btn btn-link btn-restore' data-id="{{this._id}}">Khôi phục</a>
             <a href='' class='btn btn-link' data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Xoá vĩnh viễn</a>
