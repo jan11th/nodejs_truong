@@ -68,7 +68,7 @@ class CourseController {
           .catch(next);
       break;
     default:
-       res.send('Thao tác không hợp lệ')
+       res.send('Thao tác không hợp lệ');
     }
   }
   

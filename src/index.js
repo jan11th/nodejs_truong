@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 var methodOverride = require('method-override');
 const { engine } = require('express-handlebars');
+const SortMiddleware = require('./app/middlewares/SortMiddleware');
 const route = require('./routes');
 const db = require('./config/db');
 
@@ -12,7 +13,7 @@ db.connect();
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(
   express.urlencoded({
@@ -20,7 +21,11 @@ app.use(
   }),
 );
 app.use(express.json());
+
 app.use(methodOverride('_method'));
+
+//custom middlewares
+app.use(SortMiddleware);
 
 //  http logger
 //  app.use(morgan('combined'));
@@ -32,6 +37,25 @@ app.engine(
     extname: '.hbs',
     helpers: {
       sum: (a, b) => a + b,
+      sortable: (field, sort) => {
+        const sortType = field === sort.column ? sort.type : 'default';
+
+        const icons = {
+          default:'fa fa-sort',
+          asc: 'fa fa-sort-up',
+          desc: 'fa fa-sort-down',
+        };
+        const types = {
+          default: 'desc',
+          asc: 'desc',
+          desc: 'asc',
+        };
+
+        const icon = icons[sortType];
+        const type = types[sortType];
+        return`  
+        <a href="?_sort&column=${field}&type=${type}"><span><i class="${icon}"></i></span></a>`;
+      }
     },
   }),
 );

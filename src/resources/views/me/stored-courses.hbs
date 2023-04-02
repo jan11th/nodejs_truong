@@ -1,13 +1,13 @@
 <form class='mt-4' name='container-form' method="POST" action="/courses/handle-form-actions">
   <div>
-    <h3>Sản phẩm của tôi</h3>
+    <h3>Sản phẩm của tôi</h3> 
+   
     <a href="/me/trash/courses">Thùng rác ( {{deletedCount}} )</a>
 
     <div class="mt-4 d-flex align-items-center">
           <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="checkbox-all" required>
-              <label class="form-check-label" for="checkbox-all">
-              Chọn tất cả
+              <input class="form-check-input" type="checkbox" value="" id="checkbox-all" required="required">
+              <label class="form-check-label" for="checkbox-all">Chọn tất cả
             </label>
           </div>
 
@@ -16,7 +16,7 @@
         <option value="delete">Xoá</option>
     </select>
 
-    <button class="btn btn-primary btn-sm check-all-submit-btn disabled">Áp dụng</button>
+    <button class="btn btn-primary btn-sm check-all-submit-btn"disabled>Áp dụng</button>
     </div>
   
 
@@ -24,10 +24,16 @@
   <thead>
     <tr>
       <th scope='col' colspan="2">#</th>
-      <th scope='col'>Tên sản phẩm</th>
-      <th scope='col'>Giá</th>
+      <th scope='col'>Tên sản phẩm
+         {{{sortable 'name' _sort}}}
+        </th>
+      <th scope='col'>Giá
+         {{{sortable 'price' _sort}}}
+      </th>
       <th scope='col'>Mô tả</th>
-      <th scope='col' colspan='2'>Thời gian tạo</th>
+      <th scope='col' colspan='2'>Thời gian tạo
+         {{{sortable 'createdAt' _sort}}}
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -93,7 +99,8 @@
     document.addEventListener('DOMContentLoaded', function () {
       var courseId;
       var deleteForm = document.forms['delete-course-form'];
-      var containerForm = document.forms['container-form'];
+      //var containerForm = document.forms['container-form'];
+      var containerForm = $('form[name="container-form"]')
       var btnDeleteCourse = document.getElementById('btn-delete-course');
       var checkboxAll = $('#checkbox-all');
       var courseItemCheckbox = $('input[name="courseIds[]"]');
@@ -126,7 +133,6 @@
       // Check all submit button clicked
       checkAllSubmitBtn.click(function(e){
         e.preventDefault();
-
         var isSubmitable = !$(this).hasClass('disabled');
         if (isSubmitable){
           containerForm.submit()
@@ -137,15 +143,15 @@
       function renderCheckAllSubmitBtn() {
         var checkedCount = $('input[name="courseIds[]"]:checked').length;
        if (checkedCount > 0){
-          checkAllSubmitBtn.removeClass('disabled');
+          checkAllSubmitBtn.attr('disabled', false);
          } else{
-          checkAllSubmitBtn.addClass('disabled');
+          checkAllSubmitBtn.attr('disabled', true);
          }
       }
     });
     
 
-    //FLOW: routes/index.js(app.use('/courses', coursesRouter)) 
+    //code flow: routes/index.js(app.use('/courses', coursesRouter)) 
     //--> courses.js(router.delete) 
     //--> CourseController.js(destroy)
     //--> back
