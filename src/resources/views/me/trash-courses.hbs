@@ -1,15 +1,15 @@
 <div class='mt-4'>
   <div>
-    <a href="/me/stored/courses">Quay lại Danh sách sản phẩm</a>
-    <h3>Sản phẩm đã xoá</h3>
+    <a href="/me/stored/courses">Quay lại Danh sách khoá học</a>
+    <h3>Khoá học đã xoá</h3>
   </div>
 </div>
 <table class='table mt-4'>
   <thead>
     <tr>
       <th scope='col'>STT</th>
-      <th scope='col'>Tên sản phẩm</th>
-      <th scope='col'>Giá</th>
+      <th scope='col'>Tên khoá học</th>
+      <th scope='col'>Trình độ</th>
       <th scope='col'>Mô tả</th>
       <th scope='col' colspan='3'>Thời gian xoá</th>
     </tr>
@@ -19,7 +19,7 @@
       <tr>
         <th scope='row'>{{sum @index 1}}</th>
         <td>{{this.name}}</td>
-        <td>{{this.price}}</td>
+        <td>{{this.level}}</td>
         <td>{{this.description}}</td>
         <td>{{this.deletedAt}}</td>
         <td>
@@ -31,7 +31,7 @@
       <tr>
         <td colspan="5" class="text-center" >
           Thùng rác trống.
-          <a href="/me/stored/courses"> Danh sách sản phẩm</a>
+          <a href="/me/stored/courses"> Danh sách khoá học</a>
         </td>
       </tr>
     {{/each}}

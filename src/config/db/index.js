@@ -8,9 +8,9 @@ async function connect() {
         useUnifiedTopology: true,
         // useCreateIndex: true,
         });
-        console.log('Kết nối thành công!!')
+        console.log('--- Connect Successfully!! ---')
     } catch (error) {
-        console.log('Kết nối thất bại!!')
+        console.log('--- Connect Failure!! ---')
     }
     
 }
